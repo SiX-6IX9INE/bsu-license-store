@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
     rel="stylesheet">
 
-  <title>Online Store BSU</title>
+  <title>BSU License Store</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -40,7 +40,7 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand" href="Home">
-          <h2>Online Store <em>BSU</em></h2>
+          <h2><em>BSU</em> License Store</h2>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
           aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,19 +84,19 @@
       <div class="banner-item-01">
         <div class="text-content">
           <h4>Welcome to</h4>
-          <h2>Online Store BSU</h2>
+          <h2>BSU License Store</h2>
         </div>
       </div>
       <div class="banner-item-02">
       <div class="text-content">
           <h4>Welcome to</h4>
-          <h2>Online Store BSU</h2>
+          <h2>BSU License Store</h2>
         </div>
       </div>
       <div class="banner-item-03">
         <div class="text-content">
           <h4>Welcome to</h4>
-          <h2>Online Store BSU</h2>
+          <h2>BSU License Store</h2>
         </div>
       </div>
     </div>
