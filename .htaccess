@@ -1,0 +1,25 @@
+Options -Indexes
+AddDefaultCharset utf-8
+php_value display_errors 1
+# Rewrite --------------------------------------------------->
+
+RewriteEngine ON
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+
+#Home ----------------------------------------------------->
+
+RewriteRule ^Home?$ index.php [QSA,L]
+RewriteRule ^Products?$ pages/products.php [QSA,L]
+RewriteRule ^About-Us?$ pages/about-us.php [QSA,L]
+RewriteRule ^Blog?$ pages/blog.php [QSA,L]
+RewriteRule ^Testimonials?$ pages/testimonials.php [QSA,L]
+RewriteRule ^Terms?$ pages/terms.php [QSA,L]
+RewriteRule ^Checkout?$ pages/checkout.php [QSA,L]
+RewriteRule ^Contact?$ pages/contact.php [QSA,L]
+RewriteRule ^Product-Details?$ pages/product-details.php [QSA,L]
+
+
+# Error Document ------------------------------------------>
+ErrorDocument 404 /error404/index.php
