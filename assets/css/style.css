@@ -326,6 +326,16 @@ header .navbar {
 	padding-top: 80px;
 }
 
+.bg-black:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, .4);
+}
+
 .banner-item-01 {
 	padding: 300px 0px;
 	background-image: url(../images/background_window11_1.jpg);
@@ -360,14 +370,10 @@ header .navbar {
 	transform: translateY(-50%);
 	text-align: center;
 	width: 100%;
-	padding: 30px;
-	background-color: rgba(35, 35, 35, 0.6);
-
-	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .banner .text-content h4 {
-	color: #CBCBCB;
+	color: #007dff;
 	font-size: 22px;
 	text-transform: uppercase;
 	font-weight: 700;

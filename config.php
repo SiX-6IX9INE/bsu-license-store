@@ -1,4 +1,6 @@
 <?php
+include("functions/css.php");
+include("functions/function.php");
 
 function connDB(){
     $host      = "127.0.0.1";

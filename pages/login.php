@@ -1,6 +1,6 @@
 <?php
-include("config.php");
-$page = "home";
+include("../config.php");
+$page = "login";
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ $page = "home";
   <!-- ***** Preloader End ***** -->
 
   <!-- Header -->
-   <?php include("components/header.php"); ?>
+   <?php include("../components/header.php"); ?>
   
 
   <!-- Page Content -->
