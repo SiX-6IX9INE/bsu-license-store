@@ -117,7 +117,7 @@ if (!$product) {
             <div class="row">
               <div class="col-sm-6 ml-auto">
                 <?php if (isset($_SESSION['user'])): ?>
-                  <a href="/Checkout" class="btn btn-primary btn-block">Buy</a>
+                  <a href="/Checkout/<?= urlencode($slug); ?>" class="btn btn-primary btn-block">Buy</a>
                 <?php else: ?>
                   <a href="/Login" class="btn btn-primary btn-block">Login to Buy</a>
                 <?php endif; ?>

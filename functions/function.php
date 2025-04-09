@@ -1,5 +1,10 @@
 <?php
 
+function AddComma($number) {
+    $number = str_replace(',', '', $number);
+    return number_format($number, 0, '.', ',');
+}
+
 function generateSlug($text) {
     $text = trim($text);
     $text = mb_strtolower($text, 'UTF-8');
