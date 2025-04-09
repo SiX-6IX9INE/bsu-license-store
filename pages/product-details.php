@@ -116,8 +116,12 @@ if (!$product) {
 
             <div class="row">
               <div class="col-sm-6 ml-auto">
-                <a href="/Checkout" class="btn btn-primary btn-block">Buy</a>
-              </div>
+                <?php if (isset($_SESSION['user'])): ?>
+                  <a href="/Checkout" class="btn btn-primary btn-block">Buy</a>
+                <?php else: ?>
+                  <a href="/Login" class="btn btn-primary btn-block">Login to Buy</a>
+                <?php endif; ?>
+                </div>
               <!-- <div class="col-sm-4">
                 <label class="control-label">Extra 1</label>
                 <div class="form-group">
@@ -148,7 +152,7 @@ if (!$product) {
     </div>
   </div>
 
-  <div class="latest-products">
+  <!-- <div class="latest-products">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -188,21 +192,10 @@ if (!$product) {
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="inner-content">
-            <p>Copyright © 2020 Company Name - Template by:
-              <a href="https://www.phpjabbers.com/">PHPJabbers.com</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <?php include("../components/footer.php"); ?>
+
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

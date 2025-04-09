@@ -19,6 +19,7 @@ RewriteRule ^Terms?$ pages/terms.php [QSA,L]
 RewriteRule ^Checkout?$ pages/checkout.php [QSA,L]
 RewriteRule ^Contact?$ pages/contact.php [QSA,L]
 RewriteRule ^Login?$ pages/login.php [QSA,L]
+RewriteRule ^Dashboard?$ functions/dashboard.php [QSA,L]
 RewriteRule ^Product-Details/([a-zA-Z0-9\-]+)$ pages/product-details.php?name=$1 [QSA,L]
 
 

@@ -36,7 +36,11 @@
       </li>
 
       <li class="nav-item <?= $page === 'login' ? 'active' : '' ?>">
-        <a class="nav-link" href="/Login">Login</a>
+        <?php if (isset($_SESSION['user'])): ?>
+          <a class="nav-link" href="/Login">Logout</a>
+        <?php else: ?>
+          <a class="nav-link" href="/Login">Login</a>
+        <?php endif; ?>
       </li>
 
       </ul>

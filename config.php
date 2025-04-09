@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("functions/css.php");
 include("functions/function.php");
 

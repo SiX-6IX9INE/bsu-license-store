@@ -1,314 +1,357 @@
 <?php
 include("../config.php");
 $page = "login";
+
+if (isset($_SESSION['user'])) {
+  header("Location: /Home");
+  unset($_SESSION['user']);
+  exit();
+}
+
+$conn = connDB();
+$loginError    = $_SESSION['loginError']    ?? "";
+$registerError = $_SESSION['registerError'] ?? "";
+$successMsg    = $_SESSION['successMsg']    ?? "";
+
+unset($_SESSION['loginError'], $_SESSION['registerError'], $_SESSION['successMsg']);
+
+handleLogin($conn, $loginError);
+handleRegister($conn, $registerError, $successMsg);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="assets/images/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
-    rel="stylesheet">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BSU License Store</title>
+  <link rel="icon" href="assets/images/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" />
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="assets/css/fontawesome.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fc;
+      font-family: 'Poppins', sans-serif;
+    }
 
-  <!-- Additional CSS Files -->
-  <link rel="stylesheet" href="assets/css/fontawesome.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/owl.css">
+    .container-login {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 120px;
+    }
 
+    .wrap {
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+      border-radius: 10px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      background: #fff;
+      position: relative;
+    }
+
+    .form-side {
+      position: relative;
+      flex: 1 1 50%;
+      padding: 40px;
+      min-height: 600px;
+    }
+
+    .form-inner {
+      position: absolute;
+      top: 50px;
+      left: 40px;
+      right: 40px;
+      transition: opacity 0.3s ease;
+      
+    }
+
+    .form-inner.inactive {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .form-inner.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .text-side {
+      flex: 1 1 50%;
+      background: linear-gradient(135deg,rgb(0, 0, 0), #007dff);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .text-side h2 {
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .btn-outline-white {
+      color: #fff;
+      border: 1px solid #fff;
+      border-radius: 25px;
+      padding: 10px 30px;
+      margin-top: 15px;
+      display: inline-block;
+      transition: 0.3s ease;
+    }
+
+    .btn-outline-white:hover {
+      background-color: #fff;
+      color: #007dff;
+    }
+
+    .form-control {
+      height: 48px;
+      border-radius: 30px;
+      background: rgba(0, 0, 0, 0.05);
+      border: none;
+      padding: 0 20px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right,rgb(0, 0, 0), #007dff);
+      border: none;
+      border-radius: 25px;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .social-media .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.9s ease;
+    }
+
+    .social-media .social-icon span {
+      color: #555;
+      font-size: 16px;
+    }
+
+    .social-media .social-icon:hover {
+      background: #007dff;
+    }
+
+    .social-media .social-icon:hover span {
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .wrap {
+        flex-direction: column;
+        max-width: 95%;
+      }
+
+      .form-side {
+        min-height: auto;
+        padding: 30px;
+      }
+
+      .form-inner {
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .text-side {
+        order: -1;
+        padding: 30px;
+      }
+    }
+
+    .form-check-label {
+      margin-left: 5px;
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- ***** Preloader Start ***** -->
-  <div id="preloader">
-    <div class="jumper">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
+<?php include("../components/header.php"); ?>
 
-  <!-- Header -->
-   <?php include("../components/header.php"); ?>
+<div class="container-login">
+  <div class="wrap">
+    <div class="form-side">
+      <div class="form-inner active" id="login-form">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="mb-0">Sign In</h3>
+          <div class="social-media d-flex">
+            <a href="#" class="social-icon"><span class="fa fa-facebook"></span></a>
+            <a href="#" class="social-icon"><span class="fa fa-twitter"></span></a>
+          </div>
+        </div>
+
+        <form method="POST">
+          <div class="form-group mb-3">
+            <label>Username</label>
+            <input type="text" class="form-control" name="username" required>
+          </div>
+          <div class="form-group mb-3">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password" required>
+          </div>
+          <div class="form-group">
+            <button type="submit" name="login" class="form-control btn btn-primary">Sign In</button>
+          </div>
+          <div class="form-group d-flex justify-content-between align-items-center mt-2">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="remember" id="remember" />
+              <label class="form-check-label" for="remember">Remember me</label>
+            </div>
+            <a href="#" id="forgot-password" class="text-decoration-none">Forgot password?</a>
+          </div>
+        </form>
+      </div>
+
+      <div class="form-inner inactive" id="signup-form">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="mb-0">Sign Up</h3>
+          <div class="social-media d-flex">
+            <a href="#" class="social-icon"><span class="fa fa-facebook"></span></a>
+            <a href="#" class="social-icon"><span class="fa fa-twitter"></span></a>
+          </div>
+        </div>
+
+        
+
+        <form method="POST">
+          <div class="form-group mb-3">
+            <label>Username</label>
+            <input type="text" class="form-control" name="username" required>
+          </div>
+          <div class="form-group mb-3">
+            <label>Email</label>
+            <input type="email" class="form-control" name="email" required>
+          </div>
+          <div class="form-group mb-3">
+            <label>Phone</label>
+            <input type="text" class="form-control" name="phone" required>
+          </div>
+          <div class="form-group mb-3">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password" required>
+          </div>
+          <div class="form-group">
+            <button type="submit" name="register" class="form-control btn btn-primary">Sign Up</button>
+          </div>
+          <div class="form-group text-center mt-3">
+            <a href="#" id="back-to-login">Already have an account?</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="text-side">
+      <h2 id="toggle-title">Welcome to Sign In</h2>
+      <p class="text-white" id="toggle-text">Don't have an account?</p>
+      <a href="#" class="btn btn-white btn-outline-white" id="toggle-form-btn">Sign Up</a>
+    </div>
+
+  </div>
+</div>
+
+<?php include("../components/footer.php"); ?>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  const loginForm = document.getElementById('login-form');
+  const signupForm = document.getElementById('signup-form');
+  const toggleBtn = document.getElementById('toggle-form-btn');
+  const toggleText = document.getElementById('toggle-text');
+  const toggleTitle = document.getElementById('toggle-title');
+
   
 
-  <!-- Page Content -->
-  <!-- Banner Starts Here -->
-  <div class="banner header-text">
-    <div class="owl-banner owl-carousel">
-      <div class="banner-item-01 bg-black">
-        <div class="text-content">
-          <h4>Welcome to</h4>
-          <h2>BSU License Store</h2>
-        </div>
-      </div>
-      <div class="banner-item-02 bg-black">
-        <div class="text-content">
-          <h4>Welcome to</h4>
-          <h2>BSU License Store</h2>
-        </div>
-      </div>
-      <div class="banner-item-03 bg-black">
-        <div class="text-content">
-          <h4>Welcome to</h4>
-          <h2>BSU License Store</h2>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Banner Ends Here -->
+  let isLogin = true;
 
-  <div class="latest-products">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-heading">
-            <h2>Featured Products</h2>
-            <a href="Products">view more <i class="fa fa-angle-right"></i></a>
-          </div>
-        </div>
-        <?php $query = mysqli_query(connDB(), "SELECT * FROM products ORDER BY product_id DESC");
-            while ($row = mysqli_fetch_array($query)) {
-            ?>
-        <?php if ($row['featured']) { 
-          $slug = generateSlug($row['name']);
-          ?>
-          <div class="col-md-4">
-            <div class="product-item">
-            <a href="Product-Details/<?= urlencode($slug); ?>">
-                <img src="assets/images/<?= $slug ?>-1.png" alt="">
-            </a>         
-            <div class="down-content">
-                <a href="Product-Details/<?= urlencode($slug); ?>">
-                  <h4><?= $row['name']; ?></h4>
-                </a>
-                <h6><small><del><?= ($row['price']*1.2); ?>.00฿</del></small> <?= $row['price']; ?>.00฿</h6>
-                <p class="font-kanit">
-                  <?= nl2br(shortDescription($row['description'])); ?>
-                </p>
-              </div>
-            </div>
-          </div>
-          <?php } ?>
-        <?php } ?>
-      </div>
-    </div>
-  </div>
+  toggleBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    isLogin = !isLogin;
 
-  <div class="best-features">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-heading">
-            <h2>About Us</h2>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="left-content">
-            <p>Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Explicabo, esse consequatur
-              alias repellat in excepturi inventore ad <a href="#">asperiores</a> tempora ipsa. Accusantium tenetur
-              voluptate labore aperiam molestiae rerum excepturi minus in pariatur praesentium, corporis, aliquid dicta.
-            </p>
-            <ul class="featured-list">
-              <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-              <li><a href="#">Consectetur an adipisicing elit</a></li>
-              <li><a href="#">It aquecorporis nulla aspernatur</a></li>
-              <li><a href="#">Corporis, omnis doloremque</a></li>
-            </ul>
-            <a href="About-Us" class="filled-button">Read More</a>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="right-image">
-            <img src="assets/images/about-1-570x350.jpg" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    loginForm.classList.toggle('active');
+    loginForm.classList.toggle('inactive');
+    signupForm.classList.toggle('active');
+    signupForm.classList.toggle('inactive');
 
-  <div class="services" style="background-image: url(assets/images/other-image-fullscren-1-1920x900.jpg);">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-heading">
-            <h2>Latest blog posts</h2>
+    toggleBtn.textContent = isLogin ? 'Sign Up' : 'Sign In';
+    toggleText.textContent = isLogin
+      ? "Don't have an account?"
+      : "Already have an account?";
+    toggleTitle.textContent = isLogin
+      ? "Welcome to Sign In"
+      : "Welcome to Sign Up";
+  });
 
-            <a href="Blog">read more <i class="fa fa-angle-right"></i></a>
-          </div>
-        </div>
+  document.getElementById("back-to-login").addEventListener("click", function (e) {
+    e.preventDefault();
+    loginForm.classList.add("active");
+    loginForm.classList.remove("inactive");
+    signupForm.classList.remove("active");
+    signupForm.classList.add("inactive");
 
-        <div class="col-lg-4 col-md-6">
-          <div class="service-item">
-            <a href="#" class="services-item-image"><img src="assets/images/blog-1-370x270.jpg" class="img-fluid"
-                alt=""></a>
+    isLogin = true;
+    toggleBtn.textContent = 'Sign Up';
+    toggleText.textContent = "Don't have an account?";
+    toggleTitle.textContent = "Welcome to Sign In";
+  });
 
-            <div class="down-content">
-              <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</a></h4>
+  <?php if (!empty($loginError)): ?>
+    Swal.fire({
+      icon: 'error',
+      title: 'Login Failed',
+      text: '<?= $loginError ?>',
+      timer: 3000,
+      showConfirmButton: false
+    });
+  <?php endif; ?>
 
-              <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="service-item">
-            <a href="#" class="services-item-image"><img src="assets/images/blog-2-370x270.jpg" class="img-fluid"
-                alt=""></a>
+  <?php if (!empty($registerError)): ?>
+    Swal.fire({
+      icon: 'error',
+      title: 'Register Failed',
+      text: '<?= $registerError ?>',
+      timer: 3000,
+      showConfirmButton: false
+    });
+  <?php endif; ?>
 
-            <div class="down-content">
-              <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h4>
+  <?php if (!empty($successMsg)): ?>
+    Swal.fire({
+      icon: 'success',
+      title: 'Success',
+      text: '<?= $successMsg ?>',
+      timer: 3000,
+      showConfirmButton: false
+    });
+  <?php endif; ?>
 
-              <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="service-item">
-            <a href="#" class="services-item-image"><img src="assets/images/blog-3-370x270.jpg" class="img-fluid"
-                alt=""></a>
+</script>
 
-            <div class="down-content">
-              <h4><a href="#">Aperiam modi voluptatum fuga officiis cumque</a></h4>
-
-              <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="happy-clients">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-heading">
-            <h2>Happy Clients</h2>
-
-            <a href="Testimonials">read more <i class="fa fa-angle-right"></i></a>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="owl-clients owl-carousel text-center">
-            <div class="service-item">
-              <div class="icon">
-                <i class="fa fa-user"></i>
-              </div>
-              <div class="down-content">
-                <h4>John Doe</h4>
-                <p class="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla
-                    at quia quaerat."</em></p>
-              </div>
-            </div>
-
-            <div class="service-item">
-              <div class="icon">
-                <i class="fa fa-user"></i>
-              </div>
-              <div class="down-content">
-                <h4>Jane Smith</h4>
-                <p class="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla
-                    at quia quaerat."</em></p>
-              </div>
-            </div>
-
-            <div class="service-item">
-              <div class="icon">
-                <i class="fa fa-user"></i>
-              </div>
-              <div class="down-content">
-                <h4>Antony Davis</h4>
-                <p class="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla
-                    at quia quaerat."</em></p>
-              </div>
-            </div>
-
-            <div class="service-item">
-              <div class="icon">
-                <i class="fa fa-user"></i>
-              </div>
-              <div class="down-content">
-                <h4>John Doe</h4>
-                <p class="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla
-                    at quia quaerat."</em></p>
-              </div>
-            </div>
-
-            <div class="service-item">
-              <div class="icon">
-                <i class="fa fa-user"></i>
-              </div>
-              <div class="down-content">
-                <h4>Jane Smith</h4>
-                <p class="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla
-                    at quia quaerat."</em></p>
-              </div>
-            </div>
-
-            <div class="service-item">
-              <div class="icon">
-                <i class="fa fa-user"></i>
-              </div>
-              <div class="down-content">
-                <h4>Antony Davis</h4>
-                <p class="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla
-                    at quia quaerat."</em></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="call-to-action">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="inner-content">
-            <div class="row">
-              <div class="col-md-8">
-                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing.</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque corporis amet elite author nulla.
-                </p>
-              </div>
-              <div class="col-lg-4 col-md-6 text-right">
-                <a href="Contact" class="filled-button">Contact Us</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <?php include("components/footer.php"); ?>
-
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-
-  <!-- Additional Scripts -->
-  <script src="assets/js/custom.js"></script>
-  <script src="assets/js/owl.js"></script>
 </body>
-
 </html>
