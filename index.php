@@ -12,9 +12,7 @@ $page = "home";
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" href="assets/images/favicon.png">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
-    rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
   <title>BSU License Store</title>
 
   <!-- Bootstrap core CSS -->
