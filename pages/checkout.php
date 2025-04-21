@@ -14,7 +14,7 @@ $result = $stmt->get_result();
 $product = $result->fetch_assoc();
 
 if (!$product) {
-     header("Location: /Home");
+     header("Location: /BSU/Home");
      exit;
  }
 ?>
@@ -25,15 +25,15 @@ if (!$product) {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="/assets/images/favicon.ico">
+        <link rel="icon" href="../assets/images/favicon.ico">
         <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-        <title>PHPJabbers.com | Free Online Store Website Template</title>
+        <title>BSU License Store</title>
         <!-- Bootstrap core CSS -->
-        <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- Additional CSS Files -->
-        <link rel="stylesheet" href="/assets/css/fontawesome.css">
-        <link rel="stylesheet" href="/assets/css/style.css">
-        <link rel="stylesheet" href="/assets/css/owl.css">
+        <link rel="stylesheet" href="../assets/css/fontawesome.css">
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet" href="../assets/css/owl.css">
     </head>
 <body>
      <!-- ***** Preloader Start ***** -->
@@ -47,7 +47,7 @@ if (!$product) {
      <!-- ***** Preloader End ***** -->
      <!-- Header --> <?php include("../components/header.php"); ?>
      <!-- Page Content -->
-     <div class="page-heading about-heading header-text" style="background-image: url(/assets/images/heading-6-1920x500.jpg);">
+     <div class="page-heading about-heading header-text" style="background-image: url(../assets/images/background_window11_1.jpg);">
           <div class="container">
                <div class="row">
                <div class="col-md-12">
@@ -97,10 +97,10 @@ if (!$product) {
                
           <div class="row">
                <div class="col-6">
-                    <a href="/Checkout" class="btn btn-danger btn-block">Cancel</a>
+                    <a href="Checkout" class="btn btn-danger btn-block">Cancel</a>
                </div>
                <div class="col-6">
-                    <a href="/Checkout" class="btn btn-primary btn-block">Buy</a>
+                    <a href="Checkout" class="btn btn-primary btn-block">Buy</a>
                </div>
           </div>
                <!-- <div class="inner-content"><div class="contact-form"><form action="#"><div class="row"><div class="col-sm-6 col-xs-12"><div class="form-group"><label class="control-label">Title:</label><select class="form-control" data-msg-required="This field is required."><option value="">-- Choose --</option><option value="dr">Dr.</option><option value="miss">Miss</option><option value="mr">Mr.</option><option value="mrs">Mrs.</option><option value="ms">Ms.</option><option value="other">Other</option><option value="prof">Prof.</option><option value="rev">Rev.</option></select></div></div><div class="col-sm-6 col-xs-12"><div class="form-group"><label class="control-label">Name:</label><input type="text" class="form-control"></div></div></div><div class="row"><div class="col-sm-6 col-xs-12"><div class="form-group"><label class="control-label">Email:</label><input type="text" class="form-control"></div></div><div class="col-sm-6 col-xs-12"><div class="form-group"><label class="control-label">Phone:</label><input type="text" class="form-control"></div></div></div><div class="row"><div class="col-sm-6 col-xs-12"><div class="form-group"><label class="control-label">Address 1:</label><input type="text" class="form-control"></div></div><div class="col-sm-6 col-xs-12"><div class="form-group"><label class="control-label">Address 2:</label><input type="text" class="form-control"></div></div></div><div class="row"><div class="col-sm-6 col-xs-12"><div class="form-group"><label class="control-label">City:</label><input type="text" class="form-control"></div></div><div class="col-sm-6 col-xs-12"><div class="form-group"><label class="control-label">State:</label><input type="text" class="form-control"></div></div></div><div class="row"><div class="col-sm-6 col-xs-12"><div class="form-group"><label class="control-label">Zip:</label><input type="text" class="form-control"></div></div><div class="col-sm-6 col-xs-12"><div class="form-group"><label class="control-label">Country:</label><select class="form-control"><option value="">-- Choose --</option><option value="">-- Choose --</option><option value="">-- Choose --</option><option value="">-- Choose --</option></select></div></div></div><div class="row"><div class="col-sm-6 col-xs-12"><div class="form-group"><label class="control-label">Payment method</label><select class="form-control"><option value="">-- Choose --</option><option value="bank">Bank account</option><option value="cash">Cash</option><option value="paypal">PayPal</option></select></div></div><div class="col-sm-6 col-xs-12"><div class="form-group"><label class="control-label">Captcha</label><input type="text" class="form-control"></div></div></div><div class="form-group"><label class="control-label"><input type="checkbox">
@@ -171,10 +171,10 @@ if (!$product) {
           </div>
      </div> -->
      <!-- Bootstrap core JavaScript -->
-     <script src="/vendor/jquery/jquery.min.js"></script>
-     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+     <script src="../vendor/jquery/jquery.min.js"></script>
+     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
      <!-- Additional Scripts -->
-     <script src="/assets/js/custom.js"></script>
-     <script src="/assets/js/owl.js"></script>
+     <script src="../assets/js/custom.js"></script>
+     <script src="../assets/js/owl.js"></script>
 </body>
 </html>

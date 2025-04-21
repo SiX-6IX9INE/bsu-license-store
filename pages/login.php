@@ -3,7 +3,7 @@ include("../config.php");
 $page = "login";
 
 if (isset($_SESSION['user'])) {
-  header("Location: /Home");
+  header("Location: /BSU/Home");
   unset($_SESSION['user']);
   exit();
 }

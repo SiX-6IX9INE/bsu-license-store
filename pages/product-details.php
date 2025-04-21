@@ -28,19 +28,19 @@ if (!$product) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="icon" href="/assets/images/favicon.ico">
+  <link rel="icon" href="../assets/images/favicon.ico">
 
   <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-  <title>PHPJabbers.com | Free Online Store Website Template</title>
+  <title>BSU License Store</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Additional CSS Files -->
-  <link rel="stylesheet" href="/assets/css/fontawesome.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/owl.css">
+  <link rel="stylesheet" href="../assets/css/fontawesome.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/owl.css">
 
 </head>
 
@@ -60,7 +60,7 @@ if (!$product) {
   <?php include("../components/header.php"); ?>
 
   <!-- Page Content -->
-  <div class="page-heading about-heading header-text" style="background-image: url(/assets/images/heading-6-1920x500.jpg);">
+  <div class="page-heading about-heading header-text" style="background-image: url(../assets/images/background_window11_1.jpg);">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -78,16 +78,17 @@ if (!$product) {
       <div class="row">
         <div class="col-md-4 col-xs-12">
           <div class="product-item">
-            <img src="/assets/images/<?= generateSlug($product['name']) ?>-1.png" alt="" class="img-fluid wc-image">
+            <img src="../assets/images/<?= generateSlug($product['name']) ?>-1.png" alt="" class="img-fluid wc-image">
           </div>
           <br>
             <div class="row">
             <?php for ($i = 2; $i <= 4; $i++): ?>
               <?php $imagePath = "/assets/images/" . generateSlug($product['name']) . "-$i.png"; ?>
-              <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . $imagePath)): ?>
-              <div class="col-sm-4 col-xs-6">
-                <div class="product-item">
-                  <img src="<?= $imagePath ?>" alt="" class="img-fluid">
+
+              <?php if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/BSU" . $imagePath)): ?>
+                <div class="col-sm-4 col-xs-6">
+                  <div class="product-item">
+                  <img src="/BSU<?= $imagePath ?>" alt="" class="img-fluid">
                 </div>
                 <br>
               </div>
@@ -117,9 +118,9 @@ if (!$product) {
             <div class="row">
               <div class="col-sm-6 ml-auto">
                 <?php if (isset($_SESSION['user'])): ?>
-                  <a href="/Checkout/<?= urlencode($slug); ?>" class="btn btn-primary btn-block">Buy</a>
+                  <a href="/BSU/Checkout/<?= urlencode($slug); ?>" class="btn btn-primary btn-block">Buy</a>
                 <?php else: ?>
-                  <a href="/Login" class="btn btn-primary btn-block">Login to Buy</a>
+                  <a href="/BSU/Login" class="btn btn-primary btn-block">Login to Buy</a>
                 <?php endif; ?>
                 </div>
               <!-- <div class="col-sm-4">
@@ -265,12 +266,12 @@ if (!$product) {
   </div>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="/vendor/jquery/jquery.min.js"></script>
-  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Additional Scripts -->
-  <script src="/assets/js/custom.js"></script>
-  <script src="/assets/js/owl.js"></script>
+  <script src="../assets/js/custom.js"></script>
+  <script src="../assets/js/owl.js"></script>
 
 </body>
 

@@ -37,7 +37,7 @@ function handleLogin($conn) {
         $user = mysqli_fetch_assoc($result);
         if (password_verify($password, $user['password'])) {
           $_SESSION['user'] = $user['username'];
-          header("Location: /Dashboard");
+          header("Location: /BSU/Dashboard");
           exit();
         } else {
           $_SESSION['loginError'] = "User not found or Invalid password.";
@@ -46,7 +46,7 @@ function handleLogin($conn) {
         $_SESSION['loginError'] = "User not found or Invalid password.";
       }
   
-      header("Location: /Login"); // กลับมาหน้า login เพื่อแสดง error
+      header("Location: /BSU/Login");
       exit();
     }
   }
@@ -92,7 +92,7 @@ function handleLogin($conn) {
         }
       }
   
-      header("Location: /Login"); // กลับมาหน้า login หลัง register
+      header("Location: /BSU/Login");
       exit();
     }
 }  

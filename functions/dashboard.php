@@ -1,7 +1,7 @@
 <?php
 include("../config.php");
 if (isset($_SESSION['user'])) {
-  header("Location: /Home");
+  header("Location: /BSU/Home");
   exit();
 }
 ?>
