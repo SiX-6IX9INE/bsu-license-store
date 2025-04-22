@@ -123,77 +123,12 @@ if (!$product) {
                   <a href="/BSU/Login" class="btn btn-primary btn-block">Login to Buy</a>
                 <?php endif; ?>
                 </div>
-              <!-- <div class="col-sm-4">
-                <label class="control-label">Extra 1</label>
-                <div class="form-group">
-                  <select class="form-control">
-                    <option value="0">18 gears</option>
-                    <option value="1">21 gears</option>
-                    <option value="2">27 gears</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-sm-8">
-                <label class="control-label">Quantity</label>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="1">
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <a href="/Checkout" class="btn btn-primary btn-block">Buy</a>
-                  </div>
-                </div>
-              </div> -->
             </div>
           </form>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- <div class="latest-products">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-heading">
-            <h2>Similar Products</h2>
-            <a href="/Products">view more <i class="fa fa-angle-right"></i></a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="product-item">
-            <a href="/Product-Details"><img src="/assets/images/product-1-370x270.jpg" alt=""></a>
-            <div class="down-content">
-              <a href="/Product-Details"><h4>Omega bicycle</h4></a>
-              <h6><small><del>$999.00 </del></small> $779.00</h6>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="product-item">
-            <a href="/Product-Details"><img src="/assets/images/product-2-370x270.jpg" alt=""></a>
-            <div class="down-content">
-              <a href="/Product-Details"><h4>Nike Revolution 5 Shoes</h4></a>
-              <h6><small><del>$99.00</del></small> $79.00</h6>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="product-item">
-            <a href="/Product-Details"><img src="/assets/images/product-3-370x270.jpg" alt=""></a>
-            <div class="down-content">
-              <a href="/Product-Details"><h4>Treadmill Orion Sprint</h4></a>
-              <h6><small><del>$1999.00</del></small> $1779.00</h6>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
 
   <?php include("../components/footer.php"); ?>
 

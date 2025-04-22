@@ -43,13 +43,13 @@ $page = "about-us";
     <?php include("../components/header.php"); ?>
 
     <!-- Page Content -->
-    <div class="page-heading about-heading header-text" style="background-image: url(assets/images/heading-1-1920x500.jpg);">
+    <div class="page-heading about-heading header-text" style="background-image: url(assets/images/background_window11_1.jpg);">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="text-content">
               <h4>about us</h4>
-              <h2>our company</h2>
+              <h2>BSU License Store</h2>
             </div>
           </div>
         </div>
@@ -57,28 +57,29 @@ $page = "about-us";
     </div>
 
 
-    <div class="best-features about-features">
+    <div class="best-features about-features font-kanit">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>Lorem ipsum dolor sit amet consectetur adipisicing</h2>
+              <h2>ซื้อ Windows แท้ ราคาประหยัด ใช้งานได้ทันที</h2>
             </div>
           </div>
           <div class="col-md-6">
             <div class="right-image">
-              <img src="assets/images/about-1-570x350.jpg" alt="">
+              <img src="assets/images/background_window11_1.jpg" alt="จำหน่าย License Windows">
             </div>
           </div>
           <div class="col-md-6">
             <div class="left-content">
-              <h4>Lorem ipsum dolor sit amet.</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti eum ratione ex ea praesentium quibusdam? Aut, in eum facere corrupti necessitatibus perspiciatis quis.</p>
+              <h4>License ของแท้ ใช้งานได้ 100%</h4>
+              <p>เราคือเว็บไซต์จำหน่ายคีย์ลิขสิทธิ์แท้ Windows 10 และ 11 ทั้งรุ่น Home และ Pro ในราคาสุดคุ้ม พร้อมบริการหลังการขาย ช่วยเหลือการติดตั้ง และ Activate แบบมืออาชีพ</p>
+              <p>ลูกค้ามั่นใจได้ว่า ทุกคีย์ผ่านการตรวจสอบแล้วว่าสามารถใช้งานได้จริง ถ้ามีปัญหาเราพร้อมซัพพอร์ตตลอดทุกขั้นตอน</p>
               <ul class="social-icons">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i></a></li>
               </ul>
             </div>
           </div>
@@ -86,20 +87,21 @@ $page = "about-us";
       </div>
     </div>
 
-    
-    <div class="team-members">
+    <div class="team-members font-kanit">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>Lorem ipsum dolor sit amet.</h2>
+              <h2>เกี่ยวกับเรา</h2>
             </div>
 
-            <h5>Lorem ipsum dolor sit amet.</h5>
+            <h5>ให้บริการอย่างจริงใจ มั่นใจทุกคีย์</h5>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti eum ratione ex ea praesentium quibusdam? Aut, in eum facere corrupti necessitatibus perspiciatis quis.</p>
+            <p>เราเริ่มต้นจากการเป็นผู้ใช้งานที่มองหาวิธีประหยัดในการติดตั้ง Windows แท้โดยไม่ต้องเสียเงินแพงเกินจำเป็น  
+            วันนี้เรานำประสบการณ์ตรงมาให้บริการคนอื่นในราคาที่เข้าถึงได้ พร้อมบริการหลังการขายที่คุณวางใจได้</p>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo quae eveniet tempora reprehenderit quo, necessitatibus vel sit laboriosam, sunt obcaecati quisquam explicabo voluptatibus earum facilis quidem fuga maiores. Quasi, obcaecati? <br><br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, est officiis. Ipsam quas consequuntur adipisci quis, fuga pariatur eius eveniet qui similique nulla inventore accusantium, suscipit asperiores quibusdam culpa iure!</p>
+            <p>ไม่ว่าคุณจะใช้งานที่บ้าน เรียนออนไลน์ หรือใช้ทำงาน — Windows ของแท้จะทำให้คอมพิวเตอร์ของคุณปลอดภัยและทำงานได้เต็มประสิทธิภาพ  
+            สั่งซื้อกับเราง่าย ๆ ส่งคีย์ไว พร้อมคู่มือการติดตั้งและ Activate ชัดเจน</p>
           </div>
         </div>
       </div>

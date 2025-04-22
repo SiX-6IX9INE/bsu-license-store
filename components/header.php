@@ -29,10 +29,7 @@
               aria-expanded="false">More</a>
 
             <div class="dropdown-menu">
-              <a class="dropdown-item <?= $page === 'testimonials' ? 'active' : '' ?>" href="<?= $prefix ?>Testimonials">Testimonials</a>
               <a class="dropdown-item <?= $page === 'about-us' ? 'active' : '' ?>" href="<?= $prefix ?>About-Us">About Us</a>
-              <a class="dropdown-item <?= $page === 'blog' ? 'active' : '' ?>" href="<?= $prefix ?>Blog">Blog</a>
-              <a class="dropdown-item <?= $page === 'terms' ? 'active' : '' ?>" href="<?= $prefix ?>Terms">Terms</a>
             </div>
           </li>
 
